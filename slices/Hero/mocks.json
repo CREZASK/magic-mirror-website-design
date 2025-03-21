@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "plain",
+				"type": "Text"
+			},
+			"tagline": {
+				"__TYPE__": "FieldContent",
+				"value": "find",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
