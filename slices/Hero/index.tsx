@@ -16,7 +16,8 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for hero (variation: {slice.variation}) Slices
+      <>{slice.primary.name}</>
+      <>{slice.primary.tagline}</>
     </section>
   );
 };
