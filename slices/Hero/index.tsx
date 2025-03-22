@@ -16,8 +16,20 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <>{slice.primary.name}</>
-      <>{slice.primary.tagline}</>
+      <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center" >
+        <div className="col-start-1 md:row-start-1">
+          <h1 className="mb-8 text-[clamp(3rem,20vmin,20rem)] font-extrabold leading-none tracking-tighter" 
+          aria-label={
+            slice.primary.name + " " + slice.primary.second_name
+            }>
+           <span className="block text-slate-300">{slice.primary.name}</span>
+           <span className="-mt-[.2em] block text-slate-500">{slice.primary.second_name}</span>
+           <span className="block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text 
+           text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-100 
+           md:text-4xl">{slice.primary.tagline}</span>
+          </h1>
+        </div>
+      </div>
     </section>
   );
 };
