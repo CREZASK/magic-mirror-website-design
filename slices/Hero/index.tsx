@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import gsap, { random } from "gsap";
+import Bounded from "@/components/Bounded";
 
 /**
  * Props for `Hero`.
@@ -70,10 +71,9 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     ));
   }
 
-
-
+  
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref = {component}
@@ -86,20 +86,21 @@ const Hero: FC<HeroProps> = ({ slice }) => {
             }>
 
            <span className="block text-slate-300">
-            {renderLetters(slice.primary.name, "first")}</span>
+            {renderLetters(slice.primary.name, "first")}
+            </span>
 
            <span className="-mt-[.2em] block text-slate-500">
-            {renderLetters(slice.primary.second_name, "last")}</span>
-
+            {renderLetters(slice.primary.second_name, "last")}
+            </span>
+            </h1>
            <span className="job-title block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text 
            text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-0 
            md:text-4xl">
-            {slice.primary.tagline}</span>
-
-          </h1>
+            {slice.primary.tagline}
+            </span>
         </div>
       </div>
-    </section>
+    </Bounded>
   );
 };
 
