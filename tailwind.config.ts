@@ -7,8 +7,6 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./slices/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    
-  },
-  plugins: [],
+  theme: {},
+  plugins: [require("@tailwindcss/typography")],
 } satisfies Config;
