@@ -29,7 +29,7 @@ export default function Shapes() {
         </Suspense>
       </Canvas>
     </div>
-  );
+  ); // Environment gives the meatallic light efffect, without it the metal thing wont be visible
 }
 
 function Geometries() {
@@ -37,16 +37,66 @@ function Geometries() {
     {
       position: [0, 0, 0],
       r: 0.3,
-      geometry: new THREE.IcosahedronGeometry(3),
+      geometry: new THREE.IcosahedronGeometry(3), // get shapes from three.js
+    },
+    {
+      position: [1, -0.75, 4],
+      r: 0.4,
+      geometry: new THREE.CapsuleGeometry(0.5, 1.6, 2, 16), // Pill
+    },
+    {
+      position: [-1.4, 2, -4],
+      r: 0.6,
+      geometry: new THREE.DodecahedronGeometry(1.5), // Football
+    },
+    {
+      position: [-0.8, -0.75, 5],
+      r: 0.5,
+      geometry: new THREE.TorusGeometry(0.6, 0.25, 16, 32), // Donut
+    },
+    {
+      position: [1.6, 1.6, -4],
+      r: 0.7,
+      geometry: new THREE.OctahedronGeometry(1.6), // diamond
     },
   ];
 
-  const materials = [new THREE.MeshNormalMaterial()];
+  const materials = [
+    new THREE.MeshNormalMaterial(),
+    new THREE.MeshStandardMaterial({
+      color: 0x2ecc71,
+      roughness: 0,
+      metalness: 1,
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0xf1c40f,
+      roughness: 0.4,
+      metalness: 1,
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0xe74c3c,
+      roughness: 0.1,
+      metalness: 1,
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0x8e44ad,
+      roughness: 0.1,
+      metalness: 1,
+    }),
+    new THREE.MeshStandardMaterial({
+      color: 0x1abc9c,
+      roughness: 0.1,
+      metalness: 1,
+    }),
+  ];
+
+  const soundEffects = [new Audio("/sounds/bell.ogg")];
 
   return geometries.map(({ position, r, geometry }) => (
     <Geometry
       key={JSON.stringify(position)}
       position={position.map((p) => p * 2)}
+      soundEffects={soundEffects}
       geometry={geometry}
       materials={materials}
       r={r}
@@ -54,9 +104,9 @@ function Geometries() {
   ));
 }
 
-function Geometry({ r, position, geometry, materials }) {
+function Geometry({ r, position, geometry, materials, soundEffects }) {
   const meshRef = useRef();
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const startingMaterial = getRandomMaterial();
 
@@ -66,6 +116,8 @@ function Geometry({ r, position, geometry, materials }) {
 
   function handleClick(e) {
     const mesh = e.object;
+
+    gsap.utils.random(soundEffects).play();
 
     gsap.to(mesh.rotation, {
       x: `+=${gsap.utils.random(0, 2)}`,
@@ -86,6 +138,21 @@ function Geometry({ r, position, geometry, materials }) {
     document.body.style.cursor = "default";
   };
 
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      setVisible(true);
+      gsap.from(meshRef.current.scale, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 1,
+        ease: "elastic.out(1,0.3)",
+        delay: 0.3,
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
     <group position={position} ref={meshRef}>
       <Float speed={5 * r} rotationIntensity={6 * r} floatIntensity={5 * r}>
@@ -99,5 +166,5 @@ function Geometry({ r, position, geometry, materials }) {
         />
       </Float>
     </group>
-  );
+  ); // float makes the shapes just move and rotate
 }
