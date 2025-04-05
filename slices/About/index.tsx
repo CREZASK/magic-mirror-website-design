@@ -3,6 +3,9 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
+import Button from "@/components/Button";
+import { PrismicNextImage } from "@prismicio/next";
+import Avatar from "./Avatar";
 
 /**
  * Props for `About`.
@@ -25,6 +28,15 @@ const About: FC<AboutProps> = ({ slice }) => {
         <div className="prose prose-xl prose-slate prose-invert col-start-1">
           <PrismicRichText field={slice.primary.description} />
         </div>
+        <Button
+          linkField={slice.primary.button_link}
+          label={slice.primary.button}
+        />
+
+        <Avatar
+          image={slice.primary.avatar}
+          className="row-start-1 max-w-sm md:col-start-2 md:row-end-3"
+        />
       </div>
     </Bounded>
   );
