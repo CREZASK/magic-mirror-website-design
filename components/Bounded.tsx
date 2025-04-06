@@ -1,11 +1,17 @@
-import React, { forwardRef, ElementType } from "react";
+import React, {
+  forwardRef,
+  ElementType,
+  ComponentPropsWithoutRef,
+  RefAttributes,
+} from "react";
 import clsx from "clsx";
 
 type BoundedProps<T extends ElementType = "section"> = {
   as?: T;
   className?: string;
   children?: React.ReactNode;
-};
+} & ComponentPropsWithoutRef<T> &
+  RefAttributes<Element>;
 
 const Bounded = forwardRef<HTMLDivElement, BoundedProps>(
   ({ as: Comp = "section", className, children, ...restProps }, ref) => {

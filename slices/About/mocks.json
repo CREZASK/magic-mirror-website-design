@@ -34,7 +34,6 @@
 				}
 			},
 			"avatar": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
@@ -53,6 +52,8 @@
 					"background": "transparent"
 				},
 				"alt": "lake",
+				"credits": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			}
 		},
