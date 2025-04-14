@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 
 export default function Shapes() {
   return (
-    <div className="row-span-1 row-start-1 -mt-9 aspect-square md:col-span-1 md:col-start-2 md:mt-0">
+    <div className="absolute z-10 row-span-1 row-start-1 -mt-9 aspect-square md:col-span-1 md:col-start-2 md:mt-0">
       <Canvas
         className="z-0"
         shadows
@@ -35,29 +35,9 @@ export default function Shapes() {
 function Geometries() {
   const geometries = [
     {
-      position: [0, 0, 0],
+      position: [0, -1, 0],
       r: 0.3,
-      geometry: new THREE.IcosahedronGeometry(3), // get shapes from three.js
-    },
-    {
-      position: [1, -0.75, 4],
-      r: 0.4,
-      geometry: new THREE.CapsuleGeometry(0.5, 1.6, 2, 16), // Pill
-    },
-    {
-      position: [-1.4, 2, -4],
-      r: 0.6,
-      geometry: new THREE.DodecahedronGeometry(1.5), // Football
-    },
-    {
-      position: [-0.8, -0.75, 5],
-      r: 0.5,
-      geometry: new THREE.TorusGeometry(0.6, 0.25, 16, 32), // Donut
-    },
-    {
-      position: [1.6, 1.6, -4],
-      r: 0.7,
-      geometry: new THREE.OctahedronGeometry(1.6), // diamond
+      geometry: new THREE.BoxGeometry(3, 7, 0.2), // get shapes from three.js
     },
   ];
 
@@ -119,9 +99,9 @@ function Geometry({ r, position, geometry, materials, soundEffects }) {
     gsap.utils.random(soundEffects).play();
 
     gsap.to(mesh.rotation, {
-      x: `+=${gsap.utils.random(0, 2)}`,
-      y: `+=${gsap.utils.random(0, 2)}`,
-      z: `+=${gsap.utils.random(0, 2)}`,
+      x: `+=${gsap.utils.random(0, 0)}`,
+      y: `+=${gsap.utils.random(0, 1)}`,
+      z: `+=${gsap.utils.random(0, 0)}`,
       duration: 1.3,
       ease: "elastic.out(1,0.3)",
       yoyo: true,

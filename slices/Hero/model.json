@@ -19,13 +19,6 @@
             "placeholder": ""
           }
         },
-        "second_name": {
-          "type": "Text",
-          "config": {
-            "label": "second_name",
-            "placeholder": ""
-          }
-        },
         "tagline": {
           "type": "Text",
           "config": {

@@ -12,11 +12,6 @@
 				"__TYPE__": "FieldContent",
 				"value": "find",
 				"type": "Text"
-			},
-			"second_name": {
-				"__TYPE__": "FieldContent",
-				"value": "snow",
-				"type": "Text"
 			}
 		},
 		"items": []
