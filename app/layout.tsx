@@ -18,10 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-slate-900 text-slate-100">
+    <html lang="en" className="bg-zinc-950 text-slate-100">
       <body className={urbanist.className}>
         <Header />
         {children}
+        <div className="absolute inset-0 -z-50 max-h-screen background-gradient"></div>
         <div className="h-[500vh]"></div>
       </body>
     </html>

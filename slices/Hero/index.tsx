@@ -85,8 +85,8 @@ const Hero = ({ slice }: HeroProps): React.JSX.Element => {
     >
       <div className="relative h-screen w-full overflow-hidden">
         <Shapes />
-        <div className="absolute z-10 flex flex-col items-center justify-center text-center w-full h-full">
-          <h1 className="mb-8 text-[clamp(5rem,20vw,38rem)] font-extrabold leading-tight tracking-tighter break-words text-center max-w-screen-lg">
+        <div className="absolute z-10 flex flex-col items-center py-4 md:py-40 text-center w-full h-full">
+          <h1 className="mb-8 text-[clamp(5rem,20vw,38rem)] font-extrabold leading-tight tracking-tighter break-words text-center">
             <span className="block text-slate-300">
               {renderLetters(slice.primary.name, "first")}
             </span>

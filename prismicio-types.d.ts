@@ -385,69 +385,31 @@ type AboutSliceVariation = AboutSliceDefault;
 export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
 /**
- * Primary content in *ContentIndex → Default → Primary*
- */
-export interface ContentIndexSliceDefaultPrimary {
-  /**
-   * Heading field in *ContentIndex → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_index.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  heading: prismic.KeyTextField;
-
-  /**
-   * Content Type field in *ContentIndex → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_index.default.primary.content_type
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  content_type: prismic.SelectField<"1" | "2">;
-
-  /**
-   * Description field in *ContentIndex → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_index.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-}
-
-/**
- * Default variation for ContentIndex Slice
+ * Default variation for Editor Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContentIndexSliceDefault = prismic.SharedSliceVariation<
+export type EditorSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<ContentIndexSliceDefaultPrimary>,
+  Record<string, never>,
   never
 >;
 
 /**
- * Slice variation for *ContentIndex*
+ * Slice variation for *Editor*
  */
-type ContentIndexSliceVariation = ContentIndexSliceDefault;
+type EditorSliceVariation = EditorSliceDefault;
 
 /**
- * ContentIndex Shared Slice
+ * Editor Shared Slice
  *
- * - **API ID**: `content_index`
- * - **Description**: ContentIndex
+ * - **API ID**: `editor`
+ * - **Description**: Editor
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContentIndexSlice = prismic.SharedSlice<
-  "content_index",
-  ContentIndexSliceVariation
->;
+export type EditorSlice = prismic.SharedSlice<"editor", EditorSliceVariation>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -616,10 +578,9 @@ declare module "@prismicio/client" {
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
-      ContentIndexSlice,
-      ContentIndexSliceDefaultPrimary,
-      ContentIndexSliceVariation,
-      ContentIndexSliceDefault,
+      EditorSlice,
+      EditorSliceVariation,
+      EditorSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
