@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 
 export default function Shapes() {
   return (
-    <div className="absolute z-10 row-span-1 row-start-1 -mt-9 aspect-square md:col-span-1 md:col-start-2 md:mt-0">
+    <div className="absolute inset-0 z-20 pointer-events-auto">
       <Canvas
         className="z-0"
         shadows
@@ -35,7 +35,7 @@ export default function Shapes() {
 function Geometries() {
   const geometries = [
     {
-      position: [0, -1, 0],
+      position: [0, 0, 0],
       r: 0.3,
       geometry: new THREE.BoxGeometry(3, 7, 0.2), // get shapes from three.js
     },
@@ -100,7 +100,7 @@ function Geometry({ r, position, geometry, materials, soundEffects }) {
 
     gsap.to(mesh.rotation, {
       x: `+=${gsap.utils.random(0, 0)}`,
-      y: `+=${gsap.utils.random(0, 1)}`,
+      y: `+=${gsap.utils.random(0, 2)}`,
       z: `+=${gsap.utils.random(0, 0)}`,
       duration: 1.3,
       ease: "elastic.out(1,0.3)",

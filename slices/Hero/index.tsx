@@ -83,23 +83,22 @@ const Hero = ({ slice }: HeroProps): React.JSX.Element => {
       data-slice-variation={slice.variation}
       ref={component}
     >
-      <div className="flex min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center justify-center">
+      <div className="relative h-screen w-full overflow-hidden">
         <Shapes />
-        <div className="relative col-start-1 md:row-start-1">
-          <h1 className="mb-8 text-[clamp(10rem,30vmin,50rem)] font-extrabold leading-none tracking-tighter">
+        <div className="absolute z-10 flex flex-col items-center justify-center text-center w-full h-full">
+          <h1 className="mb-8 text-[clamp(5rem,20vw,38rem)] font-extrabold leading-tight tracking-tighter break-words text-center max-w-screen-lg">
             <span className="block text-slate-300">
               {renderLetters(slice.primary.name, "first")}
             </span>
           </h1>
-          <h2 className="absolute">
-            <span
-              className="job-title block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text 
+
+          <span
+            className="job-title block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text 
             text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-0
             md:text-4xl"
-            >
-              {slice.primary.tagline}
-            </span>
-          </h2>
+          >
+            {slice.primary.tagline}
+          </span>
         </div>
       </div>
     </Bounded>
